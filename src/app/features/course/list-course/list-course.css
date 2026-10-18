@@ -1,0 +1,20 @@
+.main {
+  background-color: #0d0f12;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 100vw;
+  height: calc(100vh - 5rem);
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}

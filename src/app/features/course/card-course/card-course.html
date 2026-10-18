@@ -1,0 +1,19 @@
+<div class="cardContainer">
+  <div class="cardHeader">
+    <div class="cardTag">{{ course()?.category }}</div>
+    <div class="cardButtons">
+      <button><mat-icon>edit</mat-icon></button>
+      <button><mat-icon>delete</mat-icon></button>
+    </div>
+  </div>
+  <div class="cardBody">
+    <h2>{{ course()?.name }}</h2>
+    <p class="descricao">
+      {{ course()?.description }}
+    </p>
+  </div>
+  <div class="cardFooter">
+    <span><mat-icon>grid_view</mat-icon> {{ modulesCount() }} modulos</span>
+    <span><mat-icon>videocam</mat-icon> {{ lessonsCount() }} aulas</span>
+  </div>
+</div>

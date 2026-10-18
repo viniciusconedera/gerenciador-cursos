@@ -1,0 +1,10 @@
+<div class="main">
+  <div class="container">
+    <h1>Cursos</h1>
+    <div class="cardContainer">
+      @for (course of courses(); track course.id) {
+        <app-card-course [course]="course" />
+      }
+    </div>
+  </div>
+</div>
