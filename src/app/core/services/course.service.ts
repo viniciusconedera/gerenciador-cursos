@@ -10,4 +10,8 @@ export class CourseServie {
   getCourses() {
     return this.httpCliente.get<Array<course>>(this.baseUrl + '/courses');
   }
+
+  deleteCourse(id: string) {
+    return this.httpCliente.delete<void>(`${this.baseUrl}/courses/${id}`);
+  }
 }

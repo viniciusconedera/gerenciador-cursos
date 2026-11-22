@@ -1,9 +1,45 @@
 <div class="main">
   <div class="container">
     <h1>Cursos</h1>
-    <div class="cardContainer">
+    <div class="filterContainer">
+      <app-filter-course [(title)]="courseTitle" />
+      <button
+        class="btnNone"
+        [class.listActive]="listType() === 'card'"
+        (click)="listType.set('card')"
+      >
+        <mat-icon class="grid-icon" [class.iconActive]="listType() === 'card'">grid_view</mat-icon>
+      </button>
+      <button
+        class="btnNone"
+        [class.listActive]="listType() === 'list'"
+        (click)="listType.set('list')"
+      >
+        <mat-icon class="grid-icon" [class.iconActive]="listType() === 'list'">menu</mat-icon>
+      </button>
+    </div>
+    <div class="cardContainer" [class.listMode]="listType() === 'list'">
       @for (course of courses(); track course.id) {
-        <app-card-course [course]="course" />
+        <app-card-course
+          [course]="course"
+          [fullSize]="listType() === 'list'"
+          (deleted)="coursesResource.reload()"
+        />
+      } @empty {
+        @if (!coursesResource.isLoading()) {
+          <div class="info">
+            <div class="infoCard">
+              <img src="pilha.svg" alt="info" />
+            </div>
+            @if (courseTitle()) {
+              <h2>Nenhum resultado</h2>
+              <p class="descricao">Tente outro termo de busca</p>
+            } @else {
+              <h2>Nenhum curso ainda</h2>
+              <p class="descricao">Comece criando seu primeiro curso.</p>
+            }
+          </div>
+        }
       }
     </div>
   </div>
